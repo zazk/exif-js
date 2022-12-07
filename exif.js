@@ -1,4 +1,9 @@
-(function () {
+/**
+ * Minified by jsDelivr using Terser v3.14.1.
+ * Original file: /npm/exif-js@2.3.0/exif.js
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */ (function () {
   var debug = false;
 
   var root = this;
@@ -372,8 +377,6 @@
       var data = isHEIC(img)
         ? findEXIFinHEIC(binFile)
         : findEXIFinJPEG(binFile);
-      console.log("IS HEIC", isHEIC(img));
-      console.log("DATA in handleBinaryFile", img, data);
       img.exifdata = data || {};
       var iptcdata = findIPTCinJPEG(binFile);
       img.iptcdata = iptcdata || {};
@@ -385,7 +388,6 @@
         callback.call(img);
       }
     }
-    debugger;
     if (img.src) {
       if (/^data\:/i.test(img.src)) {
         // Data URI
@@ -478,8 +480,6 @@
   }
 
   function findEXIFinHEIC(data) {
-    console.log("HERE in HEIC", data);
-    debugger;
     var dataView = new DataView(data);
     var ftypeSize = dataView.getUint32(0); // size of ftype box
     var metadataSize = dataView.getUint32(ftypeSize); //size of metadata box
@@ -510,8 +510,9 @@
         //Check prefix at exif exifOffset
         var prefixSize = 4 + dataView.getUint32(exifLocation);
         var exifOffset = exifLocation + prefixSize;
-        var dataFinal = readEXIFHEICData(dataView, exifOffset);
-        return dataFinal;
+        var exifHEICData = readEXIFHEICData(dataView, exifOffset);
+        console.log("exifHEICData", exifHEICData);
+        return exifHEICData;
       }
     }
 
@@ -520,7 +521,6 @@
 
   function isHEIC(file) {
     // check file extension since windows returns blank mime for heic
-    console.log("File img", file.src);
     let x = file.type
       ? file.type.split("image/").pop()
       : file.src.split(".").pop().toLowerCase();
@@ -1222,8 +1222,6 @@
     console.log("getData EXIF.getData ");
     if (!imageHasData(img)) {
       getImageData(img, callback);
-
-      console.log(img, "image has NO data");
     } else {
       console.log("image has data");
       if (callback) {
