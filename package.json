@@ -1,7 +1,7 @@
 {
-  "name": "exif-js",
+  "name": "exif-js-heic",
   "version": "2.3.0",
-  "description": "JavaScript library for reading EXIF image metadata",
+  "description": "JavaScript library for reading EXIF image metadata with HEIC files support",
   "main": "exif.js",
   "types": "exif.d.ts",
   "directories": {
@@ -9,20 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/exif-js/exif-js"
+    "url": "https://github.com/zazk/exif-js"
   },
   "keywords": [
     "exif"
   ],
-  "author": "Jacob Seidelin",
+  "author": "Jacob Seidelin, Enrique Juan de Dios",
   "maintainers": [
     "Roald de Vries"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/exif-js/exif-js/issues"
+    "url": "https://github.com/zazk/exif-js/issues"
   },
-  "homepage": "https://github.com/exif-js/exif-js",
+  "homepage": "https://github.com/zazk/exif-js/exif-js",
   "ignore": [
     "**/.*",
     "node_modules",
