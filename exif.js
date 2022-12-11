@@ -523,7 +523,7 @@
     // check file extension since windows returns blank mime for heic
     let x = file.type
       ? file.type.split("image/").pop()
-      : file.src.split(".").pop().toLowerCase();
+      : (file.src || file.name).split(".").pop().toLowerCase();
     return x == "heic" || x == "heif";
   }
 
@@ -1219,7 +1219,6 @@
       !img.complete
     )
       return false;
-    console.log("getData EXIF.getData ");
     if (!imageHasData(img)) {
       getImageData(img, callback);
     } else {
